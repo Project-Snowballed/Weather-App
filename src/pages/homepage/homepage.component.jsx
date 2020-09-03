@@ -13,7 +13,7 @@ class Homepage extends Component {
   };
   async componentDidMount() {
     try {
-      const response = await axios.get(
+      const { data } = await axios.get(
         'http://api.openweathermap.org/data/2.5/weather?q=New York City&appid=5465c1bfb6bcb98e4aaaf622503ad48a'
       );
       const {
@@ -21,7 +21,7 @@ class Homepage extends Component {
         main: { temp, feels_like },
         weather,
         wind: { speed },
-      } = response.data;
+      } = data;
       this.setState({
         name,
         temp,
