@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import UserActionTypes from './user.types';
+=======
+import UserActionTypes from "./user.types";
+>>>>>>> master
 
 const INITIAL_STATE = {
   currentUser: null,
