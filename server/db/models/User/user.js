@@ -24,10 +24,10 @@ const User = db.define('user', {
     allowNull: false,
   },
   favoriteCities: {
-    type: Sequelize.ARRAY,
+    type: Sequelize.ARRAY(Sequelize.STRING),
   },
   vacationCities: {
-    type: Sequelize.ARRAY,
+    type: Sequelize.ARRAY(Sequelize.STRING),
   },
   password: {
     type: Sequelize.STRING,
