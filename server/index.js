@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const cors = require('cors');
 const morgan = require('morgan');
 const compression = require('compression');
 const session = require('express-session');
@@ -17,6 +18,8 @@ module.exports = app;
 if (process.env.NODE_ENV === 'test') {
   after('close the session store', () => sessionStore.stopExpiringSessions());
 }
+
+app.use(cors());
 
 /**
  * In your development environment, you can keep all of your
