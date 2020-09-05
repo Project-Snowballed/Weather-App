@@ -17,7 +17,6 @@ class Homepage extends Component {
   }
 
   render() {
-    console.log('PROPS', this.props);
     const { name, temp, feels_like, cloudType, windSpeed } = this.props;
     return (
       <div>
@@ -40,7 +39,9 @@ class Homepage extends Component {
   }
 }
 
-const mapStateToProps = ({ name, temp, feels_like, cloudType, windSpeed }) => {
+const mapStateToProps = ({
+  weather: { name, temp, feels_like, cloudType, windSpeed },
+}) => {
   return {
     name,
     temp,

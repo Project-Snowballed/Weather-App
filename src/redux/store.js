@@ -8,7 +8,7 @@ import userReducer from './user/user.reducer';
 import weatherReducer from './weather/weather.reducer';
 
 // TODO: Move out into seperate reducers folder.
-const reducer = { userReducer, weatherReducer };
+const reducer = combineReducers({ user: userReducer, weather: weatherReducer });
 
 const middleware = [...getDefaultMiddleware(), logger];
 
