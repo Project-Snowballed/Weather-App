@@ -1,16 +1,21 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  getDefaultMiddleware,
+  combineReducers,
+} from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import userReducer from './user/user.reducer';
-
-const middleware = [...getDefaultMiddleware(), logger];
+import weatherReducer from './weather/weather.reducer';
 
 // TODO: Move out into seperate reducers folder.
-const reducer = { userReducer };
+const reducer = combineReducers({ user: userReducer, weather: weatherReducer });
+
+const middleware = [...getDefaultMiddleware(), logger];
 
 const store = configureStore({
   reducer,
   middleware,
-  devTools: process.env.NODE_ENV !== "production",
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;
