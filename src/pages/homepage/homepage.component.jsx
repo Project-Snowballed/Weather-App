@@ -20,7 +20,7 @@ class Homepage extends Component {
     const { name, temp, feels_like, cloudType, windSpeed } = this.props;
     return (
       <div>
-        {this.props ? (
+        {temp && windSpeed ? (
           <div className="homepage">
             <h1>HOMEPAGE</h1>
             <h2>Location:{name}</h2>
