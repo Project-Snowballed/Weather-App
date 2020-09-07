@@ -5,7 +5,11 @@ import './homepage.styles.css';
 
 class Homepage extends Component {
   componentDidMount() {
-    this.props.getWeather();
+    navigator.geolocation.getCurrentPosition((position) => {
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
+      this.props.getWeather(latitude, longitude);
+    });
   }
 
   convertKtoF(kTemp) {
@@ -17,13 +21,14 @@ class Homepage extends Component {
   }
 
   render() {
-    const { name, temp, feels_like, cloudType, windSpeed } = this.props;
+    let { name, temp, feels_like, cloudType, windSpeed } = this.props;
+
     return (
       <div>
         {temp && windSpeed ? (
           <div className="homepage">
             <h1>HOMEPAGE</h1>
-            <h2>Location:{name}</h2>
+            <h2>Location: {name}</h2>
             <h3>Actual Temperature: {this.convertKtoF(temp)} degrees</h3>
             <h3>Feels Like: {this.convertKtoF(feels_like)} degrees</h3>
             <h3>How Is It Outside?: {cloudType}</h3>
@@ -52,7 +57,8 @@ const mapStateToProps = ({
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  getWeather: () => dispatch(getWeather()),
+  getWeather: (latitude, longitude) =>
+    dispatch(getWeather(latitude, longitude)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
